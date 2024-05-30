@@ -1,5 +1,5 @@
 import express from "express";
-import { home, agregar} from "../controllers/controllers.js";
+import { home, agregar, mostrar, editar, eliminar} from "../controllers/controllers.js";
 
 const router = express.Router();
 
@@ -7,8 +7,14 @@ router.get("/", home);
 
 router.post("/cancion", agregar)
 
+router.get("/canciones", mostrar)
+
+router.put("/cancion/:id", editar)
+
+router.delete("/cancion", eliminar)
+
 router.get("*", (req, res) => {
-    res.status(404).send("Not Found");
+    res.send("No se encontro la ruta");
 })
 
 export default router;
